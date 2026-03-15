@@ -1,11 +1,11 @@
 # sergay
-Здесь будет основной код для для унижения
+Здесь будет основной код для унижения,
 необходимые модули:
 ```
 python-telegram-bot
 python-dotenv
 ```
-Here will be the basic code for humiliating
+Here will be the basic code for humiliating,
 the necessary modules:
 ```
 python-telegram-bot
