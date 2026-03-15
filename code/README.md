@@ -5,3 +5,9 @@
 python-telegram-bot
 python-dotenv
 ```
+Here will be the basic code for humiliating
+the necessary modules:
+```
+python-telegram-bot
+python-dotenv
+```
