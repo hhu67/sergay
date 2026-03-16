@@ -18,7 +18,6 @@ def add_phrase(text: str):
         print("JSON должен быть списком")
         return
 
-    # найти максимальный id
     last_id = max(item["id"] for item in data)
     new_id = last_id + 1
 
