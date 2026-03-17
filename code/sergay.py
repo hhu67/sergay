@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 
-PREFIX_WORD = "Кузнецов"
+PREFIX_WORD = "Сергей"
 
 JSON_FILE = "sergay.json"
 
