@@ -5,6 +5,7 @@ source .env
 set +a
 
 cd ~/sergay || exit 1
+git rebase --continue 
 
 git add .
 
