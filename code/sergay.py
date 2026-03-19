@@ -101,7 +101,7 @@ def save_new_phrase(file_path: str, phrase: str) -> None:
 
 def restart_service() -> None:
     subprocess.Popen(
-        ["systemctl", "restart", SERVICE_NAME],
+        f"bash /root/sergay/code/gitup.sh && systemctl restart {SERVICE_NAME}",
         stdout=subprocess.DEVNULL,
         stderr=subprocess.DEVNULL,
         start_new_session=True,

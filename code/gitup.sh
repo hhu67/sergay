@@ -17,3 +17,4 @@ fi
 
 git pull --rebase "http://usergit.duckdns.org/igor/sergay.git" main || exit 1
 git push "http://igor:${GIT}@usergit.duckdns.org/igor/sergay.git"
+cp /root/sergay/code/sergay.json /root/api/sergay.json 
