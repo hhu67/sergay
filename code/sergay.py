@@ -15,7 +15,7 @@ from telegram.ext import (
     filters,
 )
 
-PREFIX_WORD = "Сергей"
+PREFIX_WORD = "серГЕЙ"
 JSON_FILE = "sergay.json"
 SERVICE_NAME = "sergay-bot"
 
