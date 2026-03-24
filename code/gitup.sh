@@ -13,6 +13,6 @@ else
     echo "Нет новых изменений"
 fi
 
-git pull --rebase "http://usergit.duckdns.org/igor/sergay.git" main || exit 1
-git push "http://igor:${GIT}@usergit.duckdns.org/igor/sergay.git"
+git pull --rebase "http://usergit.duckdns.org:3000/igor/sergay.git" main || exit 1
+git push "http://igor:${GIT}@usergit.duckdns.org:3000/igor/sergay.git"
 cp /root/sergay/code/sergay.json /root/api/sergay.json 
