@@ -24,6 +24,8 @@ SERVICE_NAME = "sergay-bot"
 # Токен для связи с сайтом (тот, что мы прописывали в api.php)
 SITE_API_TOKEN = "super_secret_bot_token_123"
 
+MESSAGE_100 = "Это сотое оскарбление для серГЕЯ пидоровича, человек каторый это добавил может идти нахуй, а серГЕЙ сын шлюхи"
+
 WAITING_NEW_PHRASE = 1
 P_TITLE = 2
 P_PHOTOS = 3
@@ -187,6 +189,10 @@ async def new_save(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     try:
         save_new_phrase(JSON_FILE, phrase_text)
         await update.message.reply_text(f"Добавленно {PREFIX_WORD} {phrase_text}")
+        
+        if len(load_phrases(JSON_FILE)) == 100 and MESSAGE_100.strip():
+            await update.message.reply_text(MESSAGE_100)
+            
         restart_service()
     except Exception as e:
         await update.message.reply_text(f"Ошибка: {e}")
