@@ -1,28 +1,61 @@
 #!/bin/bash
 
-# Цвета для красоты
+# =========================
+# Настройки
+# =========================
+BRANCH="main"
+
+# Цвета
 GREEN='\033[0;32m'
 BLUE='\033[0;34m'
-NC='\033[0m' # No Color
+RED='\033[0;31m'
+NC='\033[0m'
 
 echo -e "${BLUE}===> Добавляем изменения...${NC}"
 git add .
 
-# Проверяем, передан ли коммит в аргументах
-if [ -z "$1" ]
-  then
+# =========================
+# Коммит
+# =========================
+if [ -z "$1" ]; then
     msg="Update $(date +'%Y-%m-%d %H:%M:%S')"
-  else
+else
     msg="$1"
 fi
 
 echo -e "${BLUE}===> Коммитим: ${GREEN}$msg${NC}"
-git commit -m "$msg"
+git commit -m "$msg" 2>/dev/null || echo -e "${BLUE}Нет новых изменений${NC}"
 
+# =========================
+# Пуш на Gitek
+# =========================
 echo -e "${BLUE}===> Пушим на Gitek...${NC}"
-git push gitek main
+if ! git push gitek "$BRANCH"; then
+    echo -e "${RED}Ошибка при push в Gitek${NC}"
+    exit 1
+fi
 
+# =========================
+# Синхронизация с GitHub
+# =========================
+echo -e "${BLUE}===> Синхронизируемся с GitHub...${NC}"
+if ! git pull github "$BRANCH" --rebase; then
+    echo -e "${RED}Конфликт при pull!${NC}"
+    echo -e "${RED}Реши конфликты вручную, затем выполни:${NC}"
+    echo -e "${GREEN}git add . && git rebase --continue${NC}"
+    exit 1
+fi
+
+# =========================
+# Пуш на GitHub
+# =========================
 echo -e "${BLUE}===> Пушим на GitHub...${NC}"
-git push github main
+if ! git push github "$BRANCH"; then
+    echo -e "${RED}Ошибка при push в GitHub${NC}"
+    exit 1
+fi
 
-echo -e "${GREEN}Готово! Код обновлен в обоих репозиториях.${NC}"
+# =========================
+# Готово
+# =========================
+echo -e "${GREEN}✔ Готово! Код обновлен в обоих репозиториях.${NC}"
